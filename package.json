@@ -1,0 +1,19 @@
+{
+  "name": "react-native-wifi-module",
+  "version": "1.0.1",
+  "description": "React Native Android module to use wifi stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+  ],
+  "author": "Colleen Minor <windrainicefire@gmail.com>",
+  "license": "ISC",
+  "repository": "https://github.com/ccmxy/react-native-wifi-module",
+  "bugs": "https://github.com/ccmxy/react-native-wifi-module/issues",
+  "peerDependencies": {
+    "react-native": ">=0.13"
+  }
+}
