@@ -56,3 +56,45 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
 
 }
 ```
+
+### Example usage
+
+```
+var wifiModule = require('react-native-wifi-module')
+//Toast all networks:
+wifiModule.toastAllNetworks();
+
+//Sign device into a specific network:
+wifiModule.findAndConnect(ssid, password);
+
+//Get toasted with details about a network with a specific SSID:
+wifiModule.toastThisNetwork(ssid);
+
+//Put all wifi networks into a ListView:
+wifiModule.loadWifiList("", (wifiString) => {
+var wifiArray = wifiString.split('SSID:');
+this.setState({
+  dataSource: this.state.dataSource.cloneWithRows(wifiArray),
+     loaded: true,
+     });
+ },
+ (msg) => {
+     console.log(msg);
+   },
+ );
+
+//Find out if device is currently connect to wifi:
+wifiModule.checkIfConnected();
+```
+
+
+### Screenshots
+
+* In this version of the app, this appears when when you tap the name of the network        
+![This appears when you tap the name of the network](http://i.imgur.com/nPjvpet.png "Screenshot from this app")
+
+* Version of the app which implements RNSimpleAlertDialogModule by lucas ferreira
+![Screenshot from a version of this app which implements RNSimpleAlertDialogModule by lucas ferreira](http://i.imgur.com/7FIyUoD.png "Connect version 1")
+
+* Upon successful connection with ```wifiModule.findAndConnect(ssid, password);```
+![Upon connecting](http://i.imgur.com/xXfNzBR.png "Connect version 2")

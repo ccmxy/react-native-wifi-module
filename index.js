@@ -5,4 +5,4 @@
 'use strict';
 
 var { NativeModules } = require('react-native');
-module.exports = WifiModule;
+module.exports = NativeModules.WifiModule;
