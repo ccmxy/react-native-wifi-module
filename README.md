@@ -1,4 +1,6 @@
-# react-native-wifi-module
+# react-native-wifi-module (Android)
+
+A react-native module for viewing and connecting to Wifi networks on Android devices.
 
 ### Installation
 
@@ -90,7 +92,7 @@ wifiModule.checkIfConnected();
 
 ### Screenshots
 
-* In this version of the app, this appears when when you tap the name of the network        
+* Screenshot from [this implementation,](https://github.com/ccmxy/react-native-wifi-manager-android) taken after a list item was tapped
 ![This appears when you tap the name of the network](http://i.imgur.com/nPjvpet.png "Screenshot from this app")
 
 * Version of the app which implements RNSimpleAlertDialogModule by lucas ferreira
