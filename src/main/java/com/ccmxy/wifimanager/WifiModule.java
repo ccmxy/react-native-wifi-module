@@ -144,4 +144,3 @@ public void toastThisNetwork(String ssid) {
 	}
 
 }
-}
