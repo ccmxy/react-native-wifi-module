@@ -8,6 +8,10 @@
   },
   "keywords": [
     "react"
+    "react-native",
+    "android",
+    "wifi",
+    "connection"
   ],
   "author": "Colleen Minor <windrainicefire@gmail.com>",
   "license": "ISC",
