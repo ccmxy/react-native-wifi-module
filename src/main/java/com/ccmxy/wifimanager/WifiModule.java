@@ -52,7 +52,9 @@ public class WifiModule extends ReactContextBaseJavaModule {
 			for (ScanResult result: results) {
 				String resultString = "SSID:" + result.SSID;
 				String[] array = resultString.split(",", -1);
-				wifiString += array[0];
+				if(!resultString.equals("SSID:")){
+					wifiString += array[0];
+				}
 			}
 			successCallback.invoke(wifiString);
 		} catch (IllegalViewOperationException e) {
@@ -75,6 +77,7 @@ public class WifiModule extends ReactContextBaseJavaModule {
 		}
 	}
 	public void connectTo(ScanResult result, String password, String ssid) {
+		//Make new configuration
 		WifiConfiguration conf = new WifiConfiguration();
 		conf.SSID = "\"" + ssid + "\"";
 		String Capabilities = result.capabilities;
@@ -90,11 +93,23 @@ public class WifiModule extends ReactContextBaseJavaModule {
 		} else {
 			conf.allowedKeyManagement.set(WifiConfiguration.KeyMgmt.NONE);
 		}
+		//Remove the existing configuration for this netwrok
+		WifiManager mWifiManager = (WifiManager) getReactApplicationContext().getSystemService(Context.WIFI_SERVICE);
+		List<WifiConfiguration> mWifiConfigList = mWifiManager.getConfiguredNetworks();
+		String comparableSSID = ('"' + ssid + '"'); //Add quotes because wifiConfig.SSID has them
+		for(WifiConfiguration wifiConfig : mWifiConfigList){
+			if(wifiConfig.SSID.equals(comparableSSID)){
+				Toast.makeText(getReactApplicationContext(), "Removing old configuration for " + ssid, Toast.LENGTH_SHORT).show();
+				int networkId = wifiConfig.networkId;
+			  mWifiManager.removeNetwork(networkId);
+				mWifiManager.saveConfiguration();
+			}
+		}
 		//Add configuration to Android wifi manager settings...
-		WifiManager wifiManager = (WifiManager) getReactApplicationContext().getSystemService(Context.WIFI_SERVICE);
-		wifiManager.addNetwork(conf);
+     WifiManager wifiManager = (WifiManager) getReactApplicationContext().getSystemService(Context.WIFI_SERVICE);
+		 mWifiManager.addNetwork(conf);
 		//Enable it so that android can connect
-		List < WifiConfiguration > list = wifiManager.getConfiguredNetworks();
+		List < WifiConfiguration > list = mWifiManager.getConfiguredNetworks();
 		for (WifiConfiguration i: list) {
 			if (i.SSID != null && i.SSID.equals("\"" + ssid + "\"")) {
 				wifiManager.disconnect();
@@ -105,7 +120,6 @@ public class WifiModule extends ReactContextBaseJavaModule {
 			}
 		}
 	}
-
 //Use this method to check if the device is currently connected to Wifi.
 	@ReactMethod
 	public void checkIfConnected() {
