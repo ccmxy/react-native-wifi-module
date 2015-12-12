@@ -30,8 +30,8 @@ dependencies {
 
 * Register Module (in MainActivity.java)
 
-```java
-import com.ccmxy.wifimanager.WifiPackage;  // <--- import
+```
+java import com.ccmxy.wifimanager.WifiPackage;  // <--- import
 
 public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
   ......
@@ -51,7 +51,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
       .setInitialLifecycleState(LifecycleState.RESUMED)
       .build();
 
-      .......
+      ....
   }
 
   ......
@@ -92,11 +92,13 @@ wifiModule.checkIfConnected();
 
 ### Screenshots
 
-* Screenshot from [this implementation,](https://github.com/ccmxy/react-native-wifi-manager-android) taken after a list item was tapped
-![This appears when you tap the name of the network](http://i.imgur.com/nPjvpet.png "Screenshot from this app")
+* Version of the app which implements RNSimpleAlertDialogModule by lucas ferreira     
 
-* Version of the app which implements RNSimpleAlertDialogModule by lucas ferreira
-![Screenshot from a version of this app which implements RNSimpleAlertDialogModule by lucas ferreira](http://i.imgur.com/7FIyUoD.png "Connect version 1")
 
-* Upon successful connection with ```wifiModule.findAndConnect(ssid, password);```
-![Upon connecting](http://i.imgur.com/xXfNzBR.png "Connect version 2")
+![Screenshot from a version of this app which implements RNSimpleAlertDialogModule by lucas ferreira](http://i.imgur.com/Es4V0Wk.png)
+
+![Upon connecting](http://i.imgur.com/11G14hw.png)
+
+![3](http://i.imgur.com/QSLSexh.png)
+
+
