@@ -1,6 +1,6 @@
 {
   "name": "react-native-wifi-module",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A react-native module for viewing and connecting to Wifi networks on Android devices.",
   "main": "index.js",
   "scripts": {

@@ -31,7 +31,7 @@ dependencies {
 * Register Module (in MainActivity.java)
 
 ```
-java import com.ccmxy.wifimanager.WifiPackage;  // <--- import
+import com.ccmxy.wifimanager.WifiPackage;  // <--- import
 
 public class MainActivity extends Activity implements DefaultHardwareBackBtnHandler {
   ......
@@ -63,17 +63,21 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
 
 ```
 var wifiModule = require('react-native-wifi-module')
-//Toast all networks:
+```
+
+Toast all networks:
+```
 wifiModule.toastAllNetworks();
+```
 
-//Sign device into a specific network:
+Sign device into a specific network:
+```
 wifiModule.findAndConnect(ssid, password);
+```
 
-//Get toasted with details about a network with a specific SSID:
-wifiModule.toastThisNetwork(ssid);
-
-//Put all wifi networks into a ListView:
-wifiModule.loadWifiList("", (wifiString) => {
+You can put all wifi networks into a ListView like this:
+```
+wifiModule.loadWifiList((wifiString) => {
 var wifiArray = wifiString.split('SSID:');
 this.setState({
   dataSource: this.state.dataSource.cloneWithRows(wifiArray),
@@ -84,9 +88,15 @@ this.setState({
      console.log(msg);
    },
  );
+ ```
 
-//Find out if device is currently connect to wifi:
-wifiModule.checkIfConnected();
+connectionStatus returns true or false depending on whether device is connected to wifi:
+```
+wifiModule.connectionStatus((isConnected) => {
+  if (isConnected) {
+    //Do something
+  }
+},
 ```
 
 
@@ -100,5 +110,3 @@ wifiModule.checkIfConnected();
 ![Upon connecting](http://i.imgur.com/11G14hw.png)
 
 ![3](http://i.imgur.com/QSLSexh.png)
-
-
